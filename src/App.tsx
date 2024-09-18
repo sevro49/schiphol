@@ -1,14 +1,11 @@
-import { Button } from '@/components/ui/button'
+import Home from '@/components/Home'
 
 function App() {
 
   return (
-    <>
-      <p className="read-the-docs text-red-500">
-        Hello World!
-      </p>
-      <Button className='bg-red-500'>Hello World</Button>
-    </>
+    <div className="bg-background w-full h-screen flex items-center justify-center">
+      <Home />
+    </div>
   )
 }
 
