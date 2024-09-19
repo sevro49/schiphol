@@ -10,7 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between items-center py-5">
+    <nav className="flex justify-between items-center py-6">
       <div>
         <Button className="bg-transparent hover:bg-transparent flex items-center shadow-none gap-2">
           <div className="relative">
