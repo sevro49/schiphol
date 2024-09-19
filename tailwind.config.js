@@ -14,6 +14,8 @@ export default {
         "mainBg": "#F6F4F8",
         "primary": "#4B0097",
         "primaryHover": "#3B0075",
+        "secondary": "#E6E0EB",
+        "secondaryHover": "#D6D0DB",
       },
     },
   },
