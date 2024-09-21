@@ -17,17 +17,17 @@ const airlines = [
   {
     id: 2,
     name: 'Delta Airlines',
-    price: '$230'
+    price: '$240'
   },
   {
     id: 3,
     name: 'United Airlines',
-    price: '$230'
+    price: '$250'
   },
   {
     id: 4,
     name: 'Southwest Airlines',
-    price: '$230'
+    price: '$220'
   },
   {
     id: 5,
@@ -37,19 +37,80 @@ const airlines = [
   {
     id: 6,
     name: 'Frontier Airlines',
-    price: '$230'
+    price: '$210'
   },
   {
     id: 7,
     name: 'Spirit Airlines',
-    price: '$230'
+    price: '$200'
   },
   {
     id: 8,
     name: 'Alaska Airlines',
-    price: '$230'
+    price: '$245'
   },
-]
+  {
+    id: 9,
+    name: 'Hawaiian Airlines',
+    price: '$300'
+  },
+  {
+    id: 10,
+    name: 'Allegiant Air',
+    price: '$180'
+  },
+  {
+    id: 11,
+    name: 'Sun Country Airlines',
+    price: '$190'
+  },
+  {
+    id: 12,
+    name: 'Air Canada',
+    price: '$270'
+  },
+  {
+    id: 13,
+    name: 'WestJet',
+    price: '$260'
+  },
+  {
+    id: 14,
+    name: 'Lufthansa',
+    price: '$400'
+  },
+  {
+    id: 15,
+    name: 'British Airways',
+    price: '$350'
+  },
+  {
+    id: 16,
+    name: 'Qatar Airways',
+    price: '$500'
+  },
+  {
+    id: 17,
+    name: 'Emirates',
+    price: '$600'
+  },
+  {
+    id: 18,
+    name: 'Singapore Airlines',
+    price: '$550'
+  },
+  {
+    id: 19,
+    name: 'Thai Airways',
+    price: '$480'
+  },
+  {
+    id: 20,
+    name: 'Cathay Pacific',
+    price: '$520'
+  }
+];
+
 
 const SortBy = () => {
   return (
@@ -96,21 +157,21 @@ const SortBy = () => {
               <RadioGroupItem value="nonstop" id="nonstop" className="aria-checked:bg-primary h-3 w-3 text-primary"/>
               <Label htmlFor="nonstop" className="font-normal flex justify-between">Nontop</Label>
             </div>
-            <span className="font-normal text-sm">$230</span>
+            <span className="font-normal text-xs">$230</span>
           </div>
           <div className="flex items-center justify-between space-x-2">
             <div className="flex items-center gap-2">
               <RadioGroupItem value="1-stop" id="1-stop" className="aria-checked:bg-primary h-3 w-3 text-primary"/>
               <Label htmlFor="1-stop" className="font-normal flex justify-between">1 Stop</Label>
             </div>
-            <span className="font-normal text-sm">$230</span>
+            <span className="font-normal text-xs">$230</span>
           </div>
           <div className="flex items-center justify-between space-x-2">
           <div className="flex items-center gap-2">
               <RadioGroupItem value="2+stops" id="2+stops" className="aria-checked:bg-primary h-3 w-3 text-primary"/>
               <Label htmlFor="2+stops" className="font-normal flex justify-between">2+ Stops</Label>
             </div>
-            <span className="font-normal text-sm">$230</span>
+            <span className="font-normal text-xs">$230</span>
           </div>
         </RadioGroup>
       </div>
@@ -125,7 +186,7 @@ const SortBy = () => {
                 <RadioGroupItem value={airline.name} id={airline.name} className="aria-checked:bg-primary h-3 w-3 text-primary"/>
                 <Label htmlFor={airline.name} className="font-normal flex justify-between">{airline.name}</Label>
               </div>
-              <span className="font-normal text-sm">{airline.price}</span>
+              <span className="font-normal text-xs">{airline.price}</span>
             </div>
           ))}
         </RadioGroup>
