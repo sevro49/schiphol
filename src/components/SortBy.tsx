@@ -53,7 +53,7 @@ const airlines = [
 
 const SortBy = () => {
   return (
-    <div className='min-w-56 h-[28rem] overflow-y-scroll overflow-x-hidden hide-scrollbar'>
+    <div className='min-w-56 h-[32rem] overflow-y-scroll overflow-x-hidden hide-scrollbar'>
       <div className="w-full flex flex-col gap-3">
         <h3 className='font-semibold'>
           Sort By:
