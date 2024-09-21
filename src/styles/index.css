@@ -6,3 +6,16 @@
     --radius: 0.5rem
   }
 }
+
+.hide-scrollbar {
+  overflow-y: scroll;
+}
+
+/* Scrollbar'ı sadece bu container'da gizler */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox için */
+}
