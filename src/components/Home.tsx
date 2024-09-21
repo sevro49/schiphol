@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="bg-mainBg w-full rounded-3xl h-[48rem] shadow-2xl mx-64 ">
       <Navbar />
-      <div className="flex items-center justify-between gap-7 px-7">
+      <div className="flex justify-between gap-7 px-7">
         <Booking />
         <SideImages />
       </div>
