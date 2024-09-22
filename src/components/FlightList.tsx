@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Icon } from "@iconify/react";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator"
 
 const flightList = [
   {
@@ -131,45 +132,45 @@ const flightList = [
 
 const FlightList = () => {
   return (
-    <div className="w-full h-[32rem] overflow-y-scroll overflow-x-hidden hide-scrollbar">
+    <div className="w-full h-[26rem] xl:h-[30rem] 2xl:h-[32rem] overflow-y-scroll overflow-x-hidden hide-scrollbar">
       {flightList.map((flight) => (
       <div key={flight.id} className="mb-4">
         <Card className="shadow-none bg-white border-none rounded-bl-none">
-          <CardHeader className="space-y-0 p-5">
+          <CardHeader className="space-y-0 px-3 py-2 sm:p-5">
             <CardTitle>{flight.from} - {flight.to}</CardTitle>
             <CardDescription></CardDescription>
           </CardHeader>
-          <CardContent className="flex items-center justify-between p-5 pt-0">
-            <div className="flex flex-col">
+          <CardContent className="flex items-center justify-between p-3 pt-0 sm:p-5 sm:pt-0">
+            <div className="flex flex-col items-center 2xl:items-start">
               <span className="text-sm flex items-center gap-1 text-zinc-500">
                 <Icon icon="tdesign:flight-takeoff"/>
                 Departure
               </span>
-              <span className="font-medium">{flight.departure}</span>
-              <span>Airport: {flight.departureAirport}</span>
+              <span className="font-medium text-center sm:text-start">{flight.departure}</span>
+              <span className="text-center sm:text-start">Airport: {flight.departureAirport}</span>
             </div>
-            <div className="w-20 bg-zinc-500 h-0.5"></div>
+            <Separator className='w-8 md:w-[3.5rem] h-0.5 bg-zinc-500'/>
             <div className="flex flex-col items-center justify-center">
-              <span>{flight.airline}</span>
+              <span className="text-center">{flight.airline}</span>
               <Icon icon="f7:airplane" className="text-primary" />
-              <span className="text-zinc-500">{flight.duration}</span>
+              <span className="text-zinc-500 text-center">{flight.duration}</span>
             </div>
-            <div className="w-24 bg-zinc-500 h-0.5"></div>
-            <div className="flex flex-col">
+            <Separator className='w-8 md:w-[3.5rem] h-0.5 bg-zinc-500'/>
+            <div className="flex flex-col items-center 2xl:items-start">
               <span className="text-sm flex items-center gap-1 text-zinc-500">
                 <Icon icon="tdesign:flight-landing"/>
                 Arrival
               </span>
-              <span className="font-medium">{flight.arrival}</span>
-              <span>Airport: {flight.arrivalAirport}</span>
+              <span className="font-medium text-center sm:text-start">{flight.arrival}</span>
+              <span className="text-center sm:text-start">Airport: {flight.arrivalAirport}</span>
             </div>
           </CardContent>
-          <CardFooter className="flex justify-between p-0 pl-5">
+          <CardFooter className="flex justify-between p-0 pl-3 sm:pl-5">
             <div className="flex flex-col items-start self-start">
               <span className="text-primary font-bold">Price: {flight.price}</span>
               <span className="text-sm text-zinc-500">{flight.type}</span>
             </div>
-            <Button className="bg-primary hover:bg-primaryHover rounded-bl-none rounded-tr-none w-40 h-16">Book Flight</Button>
+            <Button className="bg-primary hover:bg-primaryHover rounded-bl-none rounded-tr-none w-40 h-12 2xl:h-16">Book Flight</Button>
           </CardFooter>
         </Card>
         <Button className="shadow-none bg-secondary hover:bg-secondaryHover text-primary underline rounded-t-none py-5">
