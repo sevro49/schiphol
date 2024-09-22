@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Icon } from "@iconify/react";
 import { Button } from "@/components/ui/button";
@@ -34,6 +34,7 @@ const Reservation = () => {
   const [selected, setSelected] = useState("round-trip");
   const [departureDate, setDepartureDate] = useState<Date | undefined>();
   const [returnDate, setReturnDate] = useState<Date | undefined>();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleSelected = (value: string) => {
     setSelected(value);
@@ -43,26 +44,50 @@ const Reservation = () => {
     resolver: zodResolver(FormSchema),
   })
 
-  const today = new Date()
+  const getDateFormat = (date: Date | undefined) => {
+    if (!date) return "";
+    return windowWidth > 1700 
+    ? format(date, "PPP") 
+    : windowWidth > 1024 
+    ? format(date, "PP") 
+    : windowWidth > 767 
+    ? format(date, "P") 
+    : format(date, "P"); 
+  };
+
+  const today = new Date();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
-    <div className='bg-white rounded-xl w-full px-6 py-4 flex flex-col items-center'>
+    <div className='bg-white rounded-xl w-full px-2 py-2 sm:px-6 sm:py-4 flex flex-col items-center'>
       <div className="w-full flex items-center justify-between">
-        <h2 className="flex items-center gap-3 text-lg font-medium">
-          <Icon icon="f7:airplane" className="" />
+        <h2 className="flex items-center gap-3 text-sm sm:text-lg font-medium">
+          <Icon icon="f7:airplane" className="text-lg hidden sm:block" />
           BOOK YOUR FLIGHT
         </h2>
         <div className="flex items-center gap-0.5">
-          <Button onClick={() => handleSelected("round-trip")} className={` ${selected === "round-trip" ? "bg-primary hover:bg-primaryHover text-white" : "bg-secondary text-primary hover:bg-secondaryHover"} rounded-s-2xl rounded-e-none shadow-none gap-2`}>
-            Round Trip
+          <Button onClick={() => handleSelected("round-trip")} className={` ${selected === "round-trip" ? "bg-primary hover:bg-primaryHover text-white" : "bg-secondary text-primary hover:bg-secondaryHover"} rounded-s-2xl rounded-e-none shadow-none gap-2 px-2 h-8 sm:h-9 sm:px-4`}>
+          <Icon icon="ic:round-loop" className=" text-2xl block sm:hidden"/>
+          <span className="hidden sm:block">Round Trip</span>  
           </Button>
-          <Button onClick={() => handleSelected("one-way")} className={` ${selected === "one-way" ? "bg-primary hover:bg-primaryHover text-white" : "bg-secondary text-primary hover:bg-secondaryHover"} rounded-s-none rounded-e-2xl shadow-none gap-2`}>
-            One way
+          <Button onClick={() => handleSelected("one-way")} className={` ${selected === "one-way" ? "bg-primary hover:bg-primaryHover text-white" : "bg-secondary text-primary hover:bg-secondaryHover"} rounded-s-none rounded-e-2xl shadow-none gap-2 px-2 h-8 sm:h-9 sm:px-4`}>
+          <Icon icon="mingcute:arrow-up-line" className=" text-2xl block sm:hidden"/>
+          <span className="hidden sm:block">One way</span>
           </Button>
         </div>
       </div>
-      <div className="w-full flex items-center gap-5 mt-6">
-        <div className="flex items-center gap-1 w-full">
+      <div className="w-full flex flex-col xl:flex-row items-center gap-1 mt-2 sm:mt-6">
+        <div className="flex items-center gap-1 w-full xl:w-1/2">
           <div className="flex items-center relative w-full">
             <Input className="rounded-s-2xl rounded-e-none ps-10"/>
             <Icon icon="mdi:airplane-takeoff" className="text-primary text-2xl absolute left-2" />
@@ -72,7 +97,7 @@ const Reservation = () => {
             <Icon icon="mdi:airplane-landing" className="text-primary text-2xl absolute left-2" />
           </div>
         </div>
-        <div className="flex items-center gap-1 w-full">
+        <div className="flex items-center gap-1 w-full xl:w-1/2">
           <div className="flex items-center relative w-full">
             <Form {...form}>
               <form className="w-full">
@@ -84,10 +109,8 @@ const Reservation = () => {
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
-                            <Button className="w-full rounded-s-2xl rounded-e-none bg-white hover:bg-white text-black shadow-sm border">
-                            {field.value 
-                            ? format(field.value, "PPP")
-                            : ""}
+                            <Button className="w-full ps-10 rounded-s-2xl rounded-e-none bg-white hover:bg-white text-black shadow-sm border">
+                            {getDateFormat(field.value)}
                             </Button>
                           </FormControl>
                         </PopoverTrigger>
@@ -127,10 +150,8 @@ const Reservation = () => {
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
-                            <Button className="w-full rounded-s-none rounded-e-2xl bg-white hover:bg-white text-black shadow-sm border">
-                            {field.value 
-                            ? format(field.value, "PPP")
-                            : ""}
+                            <Button className="w-full ps-10 rounded-s-none rounded-e-2xl bg-white hover:bg-white text-black shadow-sm border">
+                            {getDateFormat(field.value)}
                             </Button>
                           </FormControl>
                         </PopoverTrigger>
@@ -161,8 +182,8 @@ const Reservation = () => {
           </div>
         </div>
       </div>
-      <div className="w-full flex justify-start">
-        <Button className="bg-primary hover:bg-primaryHover text-white mt-6 ">
+      <div className="w-full flex justify-start mt-2 sm:mt-6">
+        <Button className="bg-primary hover:bg-primaryHover px-2 h-auto sm:h-9 sm:px-4 text-xs sm:text-sm text-white">
           Show Flights
         </Button>
       </div>
