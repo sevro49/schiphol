@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Icon } from "@iconify/react";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,6 +11,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
     <nav className="flex justify-between items-center py-6 px-2">
       <div>
@@ -39,7 +43,7 @@ const Navbar = () => {
             <p className="text-zinc-800 group-hover:text-mainBg text-lg">Emre Güler</p>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-mainBg">
-            <DropdownMenuLabel className="cursor-pointer">My Flights</DropdownMenuLabel>
+            <DropdownMenuLabel onClick={() => navigate("/my-flights")} className="cursor-pointer">My Flights</DropdownMenuLabel>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
