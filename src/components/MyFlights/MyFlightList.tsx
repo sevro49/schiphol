@@ -188,60 +188,60 @@ const flights = [
 
 const MyFlightList = () => {
   return (
-    <div className='mt-6 px-12'>
-        <div className='flex items-center justify-between'>
+    <div className='mt-1 lg:mt-6 px-2 sm:px-6 xl:px-12 mb-4'>
+        <div className='flex px-2 items-center justify-between'>
           <div>
-            <span>Sort by:</span>
-            <Button className='bg-transparent px-1 text-base text-black hover:bg-transparent shadow-none'>
+            <span className="text-xs sm:text-base">Sort by:</span>
+            <Button className='bg-transparent px-1 text-xs sm:text-base text-black hover:bg-transparent shadow-none'>
               <span>Recommended</span>
               <Icon icon="mdi:chevron-down" className='text-lg'/>
             </Button>
           </div>
-          <div className='flex items-center gap-1'>
+          <div className='flex items-center gap-1 text-xs sm:text-base'>
             <Icon icon="ic:outline-info" className='text-xl text-backgroundSecondary'/>
             Avg Fare: <strong>$225</strong>
           </div>
         </div>
-        <div className='mt-6 flex flex-col gap-4'>
+        <div className='mt-1 lg:mt-6 grid grid-cols-1 xl:grid-cols-2 2xl:flex flex-col gap-4'>
           {flights.map((flight) => (
             <Card key={flight?.id} className="rounded-md">
-              <CardContent className="flex items-center justify-between px-6 py-7">
+              <CardContent className="flex flex-col 2xl:flex-row gap-3 sm:gap-7 2xl:gap-0 items-center justify-between p-0 px-3 py-4 sm:px-6 sm:py-7">
                 <div className="flex gap-4 w-full">
-                  <div className="flex self-start">
-                    <img src="https://github.com/sevro49.png" alt={flight?.airline} className="rounded-full h-10 w-10"/>
+                  <div className="hidden sm:flex self-start">
+                    <img src="https://github.com/sevro49.png" alt={flight?.airline} className="rounded-full h-10 min-w-10"/>
                   </div>
                   <div>
-                    <p className="text-2xl mb-3 flex items-center gap-2">
+                    <p className="text-lg lg:text-2xl mb-3 flex items-center gap-2">
                       {flight?.departureTime}
                       <Separator className="w-5 bg-black"/>
                       {flight?.arrivalTime}
                     </p>
-                    <div className="flex items-center justify-between gap-20">
+                    <div className="flex items-center justify-between gap-10 sm:gap-20 xl:gap-12 2xl:gap-16">
                       <div>
-                        <p className="font-medium">{flight?.airline}</p>
-                        <Button className='bg-transparent text-backgroundSecondary hover:bg-transparent px-0 h-auto py-0 shadow-none'>
+                        <p className="font-medium text-xs sm:text-base">{flight?.airline}</p>
+                        <Button className='bg-transparent text-backgroundSecondary hover:bg-transparent px-0 h-auto py-0 shadow-none text-xs sm:text-base'>
                           <span>Flight Details</span> 
-                          <Icon icon="mdi:chevron-down" className='text-lg'/>
+                          <Icon icon="mdi:chevron-down"/>
                         </Button>
                       </div>
-                      <div>
+                      <div className="text-xs sm:text-base">
                         <p className="font-medium">{flight?.type}</p>
                         <p>{flight?.duration}</p>
                       </div>
-                      <div>
+                      <div className="text-xs sm:text-base">
                         <p className="font-medium">{flight?.departureAirport} to {flight?.arrivalAirport}</p>
                         <p>{flight?.planeCode}</p>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="w-full flex gap-3 items-center ps-64">
+                <div className="w-full pb-1 flex gap-1 sm:gap-3 items-center 2xl:justify-end overflow-x-auto hide-scrollbar">
                   {flight?.cabinClasses.map((cabinClass) => (
-                    <Card className="w-20 rounded-md cursor-pointer hover:shadow-md duration-150">
+                    <Card className="min-w-[4.5rem] 2xl:w-20 rounded-md cursor-pointer hover:shadow-md duration-150">
                       <CardHeader className="p-0 py-3 px-0">
-                        <CardTitle className="text-lg text-center">{cabinClass?.price}</CardTitle>
+                        <CardTitle className="text-base text-center">{cabinClass?.price}</CardTitle>
                       </CardHeader>
-                      <CardContent className="p-0 py-2 px-0 text-center text-sm">
+                      <CardContent className="p-0 py-2 px-0 text-center text-xs sm:text-sm">
                         <p>{cabinClass?.class}</p>
                       </CardContent>
                     </Card>
@@ -251,7 +251,7 @@ const MyFlightList = () => {
             </Card>
           ))}
         </div>
-      </div>
+    </div>
   )
 }
 
